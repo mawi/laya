@@ -33,8 +33,8 @@ describe User do
       @ability_admin.should be_able_to(:manage, @project)
     end
 
-    it "user can manage projects" do
-      @ability_user.should be_able_to(:manage, @project)
+    it "user can read projects" do
+      @ability_user.should be_able_to(:read, @project)
     end
 
     it "user can't manage users" do
