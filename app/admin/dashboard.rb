@@ -7,11 +7,11 @@ ActiveAdmin.register_page "Dashboard" do
    columns do
      column do
 
-       if can?(:manage, AdminUser)
+       if can?(:manage, User)
          panel "Users" do
            ul do
-             AdminUser.all.map do |user|
-               li link_to(user.email, admin_admin_user_path(user))
+             User.all.map do |user|
+               li link_to(user.email, admin_user_path(user))
              end
            end
          end

@@ -1,6 +1,6 @@
-ActiveAdmin.register AdminUser do
+ActiveAdmin.register User do
 
-  menu :if => proc{ can?(:manage, AdminUser) }
+  menu :if => proc{ can?(:manage, User) }
   controller.authorize_resource
 
   show do |ad|

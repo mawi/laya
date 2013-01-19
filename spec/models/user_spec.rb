@@ -1,7 +1,7 @@
 require 'spec_helper'
 require "cancan/matchers"
 
-describe AdminUser do
+describe User do
   describe "Creation:" do
     it "creates a valid user" do
       user = FactoryGirl.create(:admin)
@@ -9,12 +9,12 @@ describe AdminUser do
     end
 
     it "needs validation" do
-      user = AdminUser.create
+      user = User.create
       user.should_not be_valid
     end
 
     it "not confirmed when created" do
-      user = AdminUser.new
+      user = User.new
       user.approved.should eq(false)
     end
   end
