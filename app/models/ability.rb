@@ -7,6 +7,7 @@ class Ability
         can :manage, :all
       else
         can :read, :all
+        can :manage, Project
       end
   end
 end

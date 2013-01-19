@@ -34,6 +34,8 @@ def setup_environment
 
   # Requires factories in ./factories/ and in the engines.
   #Dir[File.expand_path('../factories/**/*.rb', __FILE__)].each { |f| require f }
+  Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
+
 
 
   RSpec.configure do |config|

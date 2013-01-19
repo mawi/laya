@@ -1,20 +1,34 @@
-ActiveAdmin.register AdminUser do     
-  index do                            
-    column :email                     
-    column :current_sign_in_at        
-    column :last_sign_in_at           
-    column :sign_in_count             
-    default_actions                   
-  end                                 
+ActiveAdmin.register AdminUser do
 
-  filter :email                       
+  menu :if => proc{ can?(:manage, AdminUser) }
+  controller.authorize_resource
 
-  form do |f|                         
-    f.inputs "Admin Details" do       
-      f.input :email                  
-      f.input :password               
-      f.input :password_confirmation  
-    end                               
-    f.actions                         
-  end                                 
-end                                   
+  show do |ad|
+    attributes_table do
+      row :email
+      row :approved
+      row :is_admin
+    end
+  end
+
+  index do
+    column :email
+    column :approved
+    column :is_admin
+    default_actions
+  end
+
+  filter :email
+
+  form do |f|
+    f.inputs "Admin Details" do
+      f.input :email
+      f.input :password
+      f.input :password_confirmation
+      f.input :approved
+      f.input :is_admin
+    end
+    f.actions
+  end
+
+end

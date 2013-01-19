@@ -24,11 +24,11 @@ end
 gem 'jquery-rails'
 
 gem 'activeadmin'
+gem "cancan"
+
 
 group :development do
   # gem 'mongrel', '>= 1.2.0.pre2'
-  gem 'pry'
-  gem 'pry-rails'
   gem 'thin'
   gem 'sql_queries_count'
 end
@@ -39,6 +39,8 @@ group :test, :development do
   gem "rspec-rails", "~> 2.0"
   gem "simplecov"
   gem "database_cleaner"
+  gem 'pry'
+  gem 'pry-rails'
 end
 
 # To use ActiveModel has_secure_password
