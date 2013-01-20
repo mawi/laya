@@ -5,7 +5,7 @@ class AddApprovedToUser < ActiveRecord::Migration
     add_index  :users, :approved
 
     User.reset_column_information
-    user = User.find_by_email('user@example.com')
+    user = User.find_by_email('admin@example.com')
     user.update_attribute(:approved, true)
   end
 

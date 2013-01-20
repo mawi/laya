@@ -7,7 +7,7 @@ Laya::Application.routes.draw do
     resources :users
     resources :projects
     resources :clients
-    resources :plugins
+    resources :plugins, :only => [:index, :show]
   end
 
   # The priority is based upon order of creation:

@@ -13,9 +13,9 @@
 end
 
 3.times do |t|
-  p = Plugin.create(:name => "Plugin #{t}")
+  p = Plugin.create(:name => "Plugin #{t}", :description => "Plugin #{t} description")
   5.times do |i|
-    Keywords.create(:keyword => "key#{t}#{i}", :trigger => "trigger#{t}#{i}", :plugin_id => p.id)
+    Keyword.create(:keyword => "key#{t}#{i}", :trigger => "trigger#{t}#{i}", :plugin_id => p.id)
   end
 end
 

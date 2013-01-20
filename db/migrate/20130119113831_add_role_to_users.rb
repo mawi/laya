@@ -5,7 +5,7 @@ class AddRoleToUsers < ActiveRecord::Migration
     add_index  :users, :is_admin
 
     User.reset_column_information
-    user = User.find_by_email('user@example.com')
+    user = User.find_by_email('admin@example.com')
     user.update_attribute(:is_admin, true)
   end
 
