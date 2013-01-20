@@ -10,5 +10,5 @@
       Project
     .inner
       = form_for @project, :url => admin_project_path(@project), :html => { :class => :form } do |f|
-        = render :partial => "form", :locals => {:f => f}
+        = render :partial => "form_edit", :locals => {:f => f}
 - content_for :sidebar, render(:partial => 'sidebar')

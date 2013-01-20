@@ -232,7 +232,8 @@ input.checkbox {
   padding: 0;
 }
 
-.form .group {
+.form .group,
+.group {
   margin-bottom: 15px;
 }
 
@@ -246,15 +247,18 @@ input.checkbox {
   float: right;
 }
 
-.form .columns .column {
+.form .columns .column,
+.columns .column {
   width: 48%;
 }
 
-.form .columns .left {
+.form .columns .left,
+.columns .left {
   float: left;
 }
 
-.form .columns .right {
+.form .columns .right,
+.columns .right {
   float: right;
 }
 

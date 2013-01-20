@@ -2,7 +2,6 @@
   .secondary-navigation
     %ul.wat-cf
       %li.first= link_to "#{t("web-app-theme.list", :default => "List")}", admin_plugins_path
-      %li= link_to "#{t("web-app-theme.new", :default => "New")}", new_admin_plugin_path
       %li.active= link_to "#{t("web-app-theme.show", :default => "Show")}", admin_plugin_path
   .content
     .inner
@@ -12,4 +11,5 @@
           \:
         = @plugin.name
       .wat-cf
-        = render @plugin.keywords
+        %ul
+          = render @plugin.keywords

@@ -20,8 +20,14 @@ end
 end
 
 10.times do |t|
-  p = Project.create(:name => "Project #{t}")
-  p.plugins << Plugin.all.sample
+  p = Project.create(:name => "Project #{t}", :description ="Sample description")
+  2.times do |j|
+    plugin = Plugin.all.sample
+    p.plugins << plugin
+    3.times do |i|
+      ProjectSetting.create(:name => "Setting #{i}", :value => "default value", :project_id => p.id, :plugin_id => plugin.id)
+    end
+  end
 end
 
 
