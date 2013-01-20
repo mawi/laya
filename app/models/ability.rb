@@ -8,6 +8,7 @@ class Ability
       else
         can :read, Project
         can :manage, Client, :user_id => user.id
+        can :read, Plugins
       end
   end
 end

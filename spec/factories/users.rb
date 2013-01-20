@@ -15,4 +15,12 @@ FactoryGirl.define do
     is_admin false
   end
 
+  factory :guest, class: User do
+    sequence(:email) {|n| "guest#{n}@laya.com" }
+    password "123456"
+    password_confirmation "123456"
+    approved false
+    is_admin false
+  end
+
 end

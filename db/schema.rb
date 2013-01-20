@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130119155153) do
+ActiveRecord::Schema.define(:version => 20130120112504) do
 
   create_table "clients", :force => true do |t|
     t.string   "name"
@@ -24,6 +24,32 @@ ActiveRecord::Schema.define(:version => 20130119155153) do
 
   add_index "clients", ["project_id"], :name => "index_clients_on_project_id"
   add_index "clients", ["user_id"], :name => "index_clients_on_user_id"
+
+  create_table "keywords", :force => true do |t|
+    t.string   "keyword"
+    t.string   "trigger"
+    t.integer  "plugin_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "keywords", ["plugin_id"], :name => "index_keywords_on_plugin_id"
+
+  create_table "plugin_projects", :force => true do |t|
+    t.integer  "plugin_id"
+    t.integer  "project_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "plugin_projects", ["plugin_id"], :name => "index_plugin_projects_on_plugin_id"
+  add_index "plugin_projects", ["project_id"], :name => "index_plugin_projects_on_project_id"
+
+  create_table "plugins", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "projects", :force => true do |t|
     t.string   "name"
