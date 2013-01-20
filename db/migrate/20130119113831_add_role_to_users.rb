@@ -1,11 +1,13 @@
 class AddRoleToUsers < ActiveRecord::Migration
-  def self.up
+
+  def change
     add_column :users, :is_admin, :boolean, :default => false, :null => false
     add_index  :users, :is_admin
+
+    User.reset_column_information
+    user = User.find_by_email('user@example.com')
+    user.update_attribute(:is_admin, true)
   end
 
-  def self.down
-    remove_index  :users, :is_admin
-    remove_column :users, :is_admin
-  end
+
 end

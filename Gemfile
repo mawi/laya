@@ -23,8 +23,11 @@ end
 
 gem 'jquery-rails'
 
-gem 'activeadmin'
+gem "devise"
+gem "formtastic"
+gem "inherited_resources"
 gem "cancan"
+
 
 
 group :development do
@@ -41,6 +44,10 @@ group :test, :development do
   gem "database_cleaner"
   gem 'pry'
   gem 'pry-rails'
+  gem 'web-app-theme', git: 'git://github.com/jweslley/web-app-theme.git'
+  gem 'haml'
+  gem 'hpricot'
+  gem 'ruby_parser'
 end
 
 # To use ActiveModel has_secure_password
