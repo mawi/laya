@@ -10,15 +10,16 @@
     .group
       = f.label :password_confirmation, "Password confirmation (*)" , :class => :label
       = f.text_field :password_confirmation, :class => 'text_field'
-  .column.right
-    =f.label "User Options", :class => 'label'
-    .group
-      = f.check_box :approved, :class => 'checkbox'
-      = f.label :approved, t("activerecord.attributes.user.approved", :default => "Approved"), :class => 'checkbox'
+  - if can?(:manage, User)
+    .column.right
+      =f.label "User Options", :class => 'label'
+      .group
+        = f.check_box :approved, :class => 'checkbox'
+        = f.label :approved, t("activerecord.attributes.user.approved", :default => "Approved"), :class => 'checkbox'
 
-    .group
-      = f.check_box :is_admin, :class => 'checkbox'
-      = f.label :is_admin, t("activerecord.attributes.user.is_admin", :default => "Is admin"), :class => 'checkbox'
+      .group
+        = f.check_box :is_admin, :class => 'checkbox'
+        = f.label :is_admin, t("activerecord.attributes.user.is_admin", :default => "Is admin"), :class => 'checkbox'
 
 .group.navform.wat-cf
   %button.button{:type => "submit"}

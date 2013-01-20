@@ -1,8 +1,8 @@
 .block
   .secondary-navigation
     %ul.wat-cf
-      %li.first.active= link_to "#{t("web-app-theme.list", :default => "List")}", admin_users_path
-      %li= link_to "#{t("web-app-theme.new", :default => "New")}", new_admin_user_path
+      %li.first.active= link_to "#{t("web-app-theme.list", :default => "List")}", admin_users_path if can?(:manage, User)
+      %li= link_to "#{t("web-app-theme.new", :default => "New")}", new_admin_user_path if can?(:manage, User)
   .content
     %h2.title
       = t("web-app-theme.all", :default => "All")

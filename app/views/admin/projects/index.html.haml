@@ -2,7 +2,7 @@
   .secondary-navigation
     %ul.wat-cf
       %li.first.active= link_to "#{t("web-app-theme.list", :default => "List")}", admin_projects_path
-      %li= link_to "#{t("web-app-theme.new", :default => "New")}", new_admin_project_path
+      %li= link_to "#{t("web-app-theme.new", :default => "New")}", new_admin_project_path if can?(:manage, Project)
   .content
     %h2.title
       = t("web-app-theme.all", :default => "All")
@@ -14,6 +14,7 @@
           %th
             = t("activerecord.attributes.admin_project.name", :default => t("activerecord.labels.name", :default => "Name"))
           %th Description
+          %th Plugins
           %th.last &nbsp;
         - @projects.each do |project|
           %tr{:class => cycle("odd", "even")}
@@ -22,12 +23,14 @@
             %td
               = link_to project.name, admin_project_path(project)
             %td= project.description
+            %td= project.plugins.map(&:name).join(", ")
             %td.last
               = link_to "#{t("web-app-theme.show", :default => "Show")}", admin_project_path(project)
-              |
-              \#{link_to "#{t("web-app-theme.edit", :default => "Edit")}", edit_admin_project_path(project)}
-              |
-              \#{link_to "#{t("web-app-theme.delete", :default => "Delete")}", admin_project_path(project), :method => :delete, :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}"}
+              - if can?(:manage, Project)
+                |
+                \#{link_to "#{t("web-app-theme.edit", :default => "Edit")}", edit_admin_project_path(project)}
+                |
+                \#{link_to "#{t("web-app-theme.delete", :default => "Delete")}", admin_project_path(project), :method => :delete, :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}"}
       .actions-bar.wat-cf
         .actions
 - content_for :sidebar, render(:partial => 'sidebar')
