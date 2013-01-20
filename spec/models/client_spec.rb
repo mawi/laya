@@ -26,4 +26,13 @@ describe Client do
     @client2.should_not be_valid
   end
 
+
+  it "must recreate api key after save" do
+    @client = FactoryGirl.create(:client_full)
+    key = @client.api_key
+    @client.name = "Fake2"
+    @client.save
+    @client.api_key.should_not eq(key)
+  end
+
 end

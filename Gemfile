@@ -27,6 +27,7 @@ gem "devise"
 gem "formtastic"
 gem "inherited_resources"
 gem "cancan"
+gem "formtastic"
 
 
 

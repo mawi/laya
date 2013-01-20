@@ -13,7 +13,7 @@
           %th.first ID
           %th
             = t("activerecord.attributes.admin_project.name", :default => t("activerecord.labels.name", :default => "Name"))
-          %th= t("web-app-theme.created_at", :default => "Created at")
+          %th Description
           %th.last &nbsp;
         - @projects.each do |project|
           %tr{:class => cycle("odd", "even")}
@@ -21,12 +21,12 @@
               = project.id
             %td
               = link_to project.name, admin_project_path(project)
-            %td
-              = project.created_at
+            %td= project.description
             %td.last
               = link_to "#{t("web-app-theme.show", :default => "Show")}", admin_project_path(project)
               |
-              \#{link_to "#{t("web-app-theme.edit", :default => "Edit")}", edit_admin_project_path(project)} |
+              \#{link_to "#{t("web-app-theme.edit", :default => "Edit")}", edit_admin_project_path(project)}
+              |
               \#{link_to "#{t("web-app-theme.delete", :default => "Delete")}", admin_project_path(project), :method => :delete, :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}"}
       .actions-bar.wat-cf
         .actions

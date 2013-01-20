@@ -7,7 +7,7 @@ class Client < ActiveRecord::Base
   validates_uniqueness_of :api_key
 
 
-  before_create :generate_api_key
+  before_save :generate_api_key
 
   private
 
