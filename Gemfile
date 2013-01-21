@@ -28,6 +28,9 @@ gem "formtastic"
 gem "inherited_resources"
 gem "cancan"
 gem "formtastic"
+gem 'web-app-theme', git: 'git://github.com/jweslley/web-app-theme.git'
+gem 'haml'
+
 
 
 
@@ -45,10 +48,8 @@ group :test, :development do
   gem "database_cleaner"
   gem 'pry'
   gem 'pry-rails'
-  gem 'web-app-theme', git: 'git://github.com/jweslley/web-app-theme.git'
-  gem 'haml'
-  gem 'hpricot'
   gem 'ruby_parser'
+  gem 'hpricot'
 end
 
 
