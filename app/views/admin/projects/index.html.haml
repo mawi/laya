@@ -29,6 +29,9 @@
               - if can?(:manage, Project)
                 |
                 \#{link_to "#{t("web-app-theme.edit", :default => "Edit")}", edit_admin_project_path(project)}
+                - if !project.project_settings.blank?
+                  |
+                  \#{link_to "Settings", admin_project_settings_path(project)}
                 |
                 \#{link_to "#{t("web-app-theme.delete", :default => "Delete")}", admin_project_path(project), :method => :delete, :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}"}
       .actions-bar.wat-cf

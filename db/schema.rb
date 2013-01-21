@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130120161037) do
+ActiveRecord::Schema.define(:version => 20130120194546) do
 
   create_table "clients", :force => true do |t|
     t.string   "name"
@@ -53,9 +53,9 @@ ActiveRecord::Schema.define(:version => 20130120161037) do
   end
 
   create_table "project_settings", :force => true do |t|
-    t.string   "name"
     t.string   "value"
     t.integer  "project_id"
+    t.integer  "setting_id"
     t.integer  "plugin_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(:version => 20130120161037) do
 
   add_index "project_settings", ["plugin_id"], :name => "index_project_settings_on_plugin_id"
   add_index "project_settings", ["project_id"], :name => "index_project_settings_on_project_id"
+  add_index "project_settings", ["setting_id"], :name => "index_project_settings_on_setting_id"
 
   create_table "projects", :force => true do |t|
     t.string   "name"
@@ -70,6 +71,15 @@ ActiveRecord::Schema.define(:version => 20130120161037) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
+
+  create_table "settings", :force => true do |t|
+    t.string   "name"
+    t.integer  "plugin_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "settings", ["plugin_id"], :name => "index_settings_on_plugin_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "",    :null => false

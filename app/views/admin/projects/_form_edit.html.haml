@@ -7,13 +7,15 @@
       = f.label :description, t("activerecord.attributes.project.description", :default => "Description"), :class => :label
       = f.text_area :description, :class => 'text_area'
   .column.right
-    - @project.project_settings.group_by(&:plugin).each do |plugin,plugin_project_setting|
-      = f.label "#{plugin.name} settings", :class => "label"
-      = f.fields_for :project_settings, plugin_project_setting do |ps|
-        .group
-          = ps.object.name
-          = ps.text_field :value
+
+    .group
+      = f.label "Plugins", :class => "label"
+      = hidden_field_tag 'project[plugin_ids][]'
+      - Plugin.all.each do |plugin|
+        = check_box_tag 'project[plugin_ids][]', plugin.id, @project.plugins.include?(plugin), :id => "project_plugins_ids_#{plugin.id}"
+        = plugin.name
 .group.navform.wat-cf
+
   %button.button{:type => "submit"}
     = image_tag("web-app-theme/icons/tick.png", :alt => "#{t("web-app-theme.save", :default => "Save")}")
     = t("web-app-theme.save", :default => "Save")

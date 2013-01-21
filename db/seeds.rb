@@ -17,16 +17,16 @@ end
   5.times do |i|
     Keyword.create(:keyword => "key#{t}#{i}", :trigger => "trigger#{t}#{i}", :plugin_id => p.id)
   end
+  5.times do |i|
+    Setting.create(:name => "Setting #{t} #{i}", :plugin_id => p.id)
+  end
 end
 
 10.times do |t|
-  p = Project.create(:name => "Project #{t}", :description ="Sample description")
+  p = Project.create(:name => "Project #{t}", :description => "Sample description")
   2.times do |j|
     plugin = Plugin.all.sample
     p.plugins << plugin
-    3.times do |i|
-      ProjectSetting.create(:name => "Setting #{i}", :value => "default value", :project_id => p.id, :plugin_id => plugin.id)
-    end
   end
 end
 

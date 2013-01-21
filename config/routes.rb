@@ -2,10 +2,13 @@ Laya::Application.routes.draw do
 
   devise_for :users
   root :to => 'admin/home#index'
+
+  match 'api' => "api#call"
   namespace :admin do
     root :to => 'home#index'
     resources :users
     resources :projects
+    get 'projects/:id/settings' => 'projects#edit_settings', :as => :project_settings
     resources :clients
     resources :plugins, :only => [:index, :show]
   end

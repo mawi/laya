@@ -51,6 +51,11 @@ group :test, :development do
   gem 'ruby_parser'
 end
 
+
+#PLUGINS
+
+gem "laya_conversation", :path => "/Users/mmarin/Work/laya_conversation"
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
