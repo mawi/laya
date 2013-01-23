@@ -23,12 +23,15 @@
             - @project.project_settings.group_by(&:plugin).each do |plugin|
               %p
                 %b= plugin[0].name
-              %ul
-                - plugin[1].each do |ps|
-                  %li
-                    =ps.name
-                    = "=>"
-                    =ps.value
+              %table.table
+                %thead
+                  %th Keyword
+                  %th Trigger
+                %tbody
+                  - plugin[1].each do |ps|
+                    %tr{:class => cycle("odd", "even")}
+                      %td= ps.name
+                      %td= ps.value
       - if can?(:manage, Project)
         .wat-cf
           = link_to image_tag("web-app-theme/icons/application_edit.png", :alt => "#{t("web-app-theme.edit", :default=> "Edit")}") + " " + t("web-app-theme.edit", :default=> "Edit"), edit_admin_project_path(@project), :class => "button"

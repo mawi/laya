@@ -9,7 +9,7 @@ GIT
 PATH
   remote: /Users/mmarin/Work/laya_conversation
   specs:
-    laya_conversation (0.0.1)
+    laya_conversation (0.0.2)
 
 GEM
   remote: https://rubygems.org/

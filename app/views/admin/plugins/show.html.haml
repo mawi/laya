@@ -10,6 +10,9 @@
           = t("activerecord.attributes.admin_plugin.name", :default => t("activerecord.labels.name", :default => "Name"))
           \:
         = @plugin.name
-      .wat-cf
-        %ul
+      %table.table
+        %thead
+          %th Keyword
+          %th Trigger
+        %tbody
           = render @plugin.keywords
