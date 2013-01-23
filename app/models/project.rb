@@ -23,5 +23,21 @@ class Project < ActiveRecord::Base
     self.project_settings.where(:plugin_id => obj).delete_all
   end
 
+  def keywords
+    self.plugins.map(&:keywords_hash).reduce Hash.new, :merge
+  end
+
+  def query(query)
+    keys = self.keywords
+    hits = query.split(" ") & keys.keys
+    return "Not found" if hits.blank?
+    data = []
+    hits.each do |key|
+      plugin = Plugin.find_by_keyword(key)
+      data << plugin.perform(key,query)
+    end
+    data
+  end
+
 
 end

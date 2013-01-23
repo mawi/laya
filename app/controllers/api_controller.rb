@@ -4,7 +4,10 @@ class ApiController < ApplicationController
   respond_to :json
 
   def call
-    render :json => {:response_code => "200", :data => "API"}
+    project = @client.project
+    data = project.query(params[:query]) if !params[:query].blank?
+
+    render :json => {:response_code => "200", :data => data}
   end
 
 
